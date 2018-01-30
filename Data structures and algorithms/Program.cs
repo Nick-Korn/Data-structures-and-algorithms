@@ -35,6 +35,7 @@ namespace Data_structures_and_algorithms
             }
         }
 
+        // Assignment 2
         static int Fibo(int n)
         {
             if (n == 0 || n == 1)
@@ -54,6 +55,7 @@ namespace Data_structures_and_algorithms
             return Fibo(n - 1) / Fibo(n);
         }
 
+        // Assignment 3
         static int Reku(int n)
         {
             if (n == 0)
