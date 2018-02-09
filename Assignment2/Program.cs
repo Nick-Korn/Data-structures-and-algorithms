@@ -20,11 +20,19 @@ namespace Assignment2
                 Console.WriteLine(k);
             }
             */
+            /* 
             int[] values = new int[8] {50, 70, 30, 2, 40, 24, 19, 60};
             int[] results = InsertionSort(values);
             foreach (int num in results)
             {
                 Console.WriteLine(num);
+            }
+            */
+            List<int> Values = new List<int>(){9,3,11,2};
+            List<int> result = Bubble(Values);
+            foreach (int number in result)
+            {
+                Console.WriteLine(number);
             }
         }
 
@@ -35,10 +43,11 @@ namespace Assignment2
             {
                 int temp = key[k];
                 result[temp] = v[k];
-            return result;
+            
             }
-
+            return result;
         }
+
 
         static int[] InsertionSort(int[] values)
         {
@@ -55,6 +64,25 @@ namespace Assignment2
                 }
                 values[j + 1] = x;
                 Console.WriteLine("Number of loops it took to sort index {0}: {1}", x, loopage);
+            }
+            return values;
+        }
+
+        static List<int> Bubble(List<int> values)
+        {
+            int i, j;
+
+            for (i = 0; i < values.Count - 1; i++)
+            {
+                for(j = 0; j < values.Count - i - 1; j++)
+                {
+                    if (values[j] > values[j + 1])
+                    {
+                        int temp = values[j];
+                        values[j] = values[j+1];   
+                        values[j + 1] = temp;
+                    }
+                }
             }
             return values;
         }
