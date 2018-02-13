@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assignment2
 {
     class Program
     {
-        static void Main(string[] arg)
+        static void Main()
         {
             /* 
             List<int> key = new List<int>(){1,3,0,4,2};
@@ -37,7 +34,8 @@ namespace Assignment2
             */
             int[] temp = new int[10];
             int start = 0;
-            int[] values = new int[10]{60, 170, 30, 2, 11, 19, 24, 50, 3, 100};
+            int[] values = new int[]{60, 170, 30, 2, 11, 19, 24, 50, 3, 100};
+            
             int end = values.Length;
             int[] result = MergeSort(values, temp, start, end - 1);
 
@@ -47,7 +45,7 @@ namespace Assignment2
             }
         }
 
-        static int[] Shuffle(List<int> v, List<int> key)
+        private static int[] Shuffle(List<int> v, List<int> key)
         {
             int[] result = new int[5];
             for (int k = 0; k < v.Count; k++)
@@ -60,7 +58,7 @@ namespace Assignment2
         }
 
 
-        static int[] InsertionSort(int[] values)
+        private static int[] InsertionSort(int[] values)
         {
             for (int i = 0; i < values.Length; i++)
             {
@@ -79,7 +77,7 @@ namespace Assignment2
             return values;
         }
 
-        static List<int> Bubble(List<int> values)
+        private static List<int> Bubble(List<int> values)
         {
             int i, j;
 
@@ -97,80 +95,10 @@ namespace Assignment2
             }
             return values;
         }
-        static int[] MergeSort(int[] t, int[] l, int start, int end)
+        private static int[] MergeSort(int[] t, int[] l, int start, int end)
         {
-
-            if (start >= end) 
-            {
-                return t;
-            }
-                
-            else if (start + 1 == end)
-	        {
-                if(t[start] < t[end])
-                {
-                    int temp = t[start];
-                    t[start] = t[end];
-                    t[end] = temp;
-                }
-	        }
-            else 
-            {
-                int middle = (start + end)/2;
-                MergeSort(t, l, start, middle);
-                MergeSort(t, l, middle + 1, end);
-            
-                int i = start;
-                int j = middle + 1;
-                int k = start;
-
-                while (k <= end)
-                {
-                    if (i > middle)
-                    {
-                        while (j <= end)
-                        {
-                            l[k] = t[j];
-                            k = k + 1;
-                            j = j + 1;
-                        }
-
-                    }
-
-                    else if (j > end)
-                    {
-                        while (i <= middle)
-                        {
-                            l[k] = t[i];
-                            k = k + 1;
-                            i = i + 1;
-                        }
-                    }
-
-                    else
-                    {
-                        if (t[i] > t[j])
-                        {
-                            l[k] = t[i];
-                            i++;
-                        }
-                        else
-                        {
-                            l[k] = t[j];
-                            j++;
-                        }
-
-                        k++;
-                    }
-                }
-
-                for (int x = start; x < end; x++)
-                {
-                    t[x] = l[x];
-                }
-            }
-
-            return t;
+            int[] merged = new int[10];
+            return merged;
         }
     }
 }
