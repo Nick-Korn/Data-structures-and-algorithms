@@ -36,7 +36,7 @@ namespace Assignment2
             */
             List<int> temp = new List<int>();
             int start = 1;
-            int end = temp.count;
+            int end = temp.Count;
             List<int> Values = new List<int>(){60, 170, 30, 2, 11, 19, 24, 50, 60, 3, 100};
             List<int> result = MergeSort(Values, temp, start, end);
 
@@ -96,75 +96,81 @@ namespace Assignment2
             }
             return values;
         }
-        static List<int> MergeSort(List<int> values, List<int> temp, int start, int end)
+        static List<int> MergeSort(List<int> t, List<int> l, int start, int end)
         {
 
-            if (start >= end) break;
+            if (start >= end) 
+            {
+                return t;
+            }
+                
             else if (start + 1 == end)
 	        {
                 if(t[start] < t[end])
                 {
-                    int temp = temp[end];
-                    temp[end] = temp[start];
-                    temp[start] = temp[end];
+                    int temp = t[end];
+                    t[end] = t[start];
+                    t[start] = temp;
                 }
 	        }
             else 
             {
-                middle = (start + end)/2;
-                MergeSort(values, temp, start, middle);
-                MergeSort(values, temp, middle + 1, end);
-            }
-            i = alku;
-            j = middle + 1;
-            k = start;
+                int middle = (start + end)/2;
+                MergeSort(t, l, start, middle);
+                MergeSort(t, l, middle + 1, end);
+            
+                int i = start;
+                int j = middle + 1;
+                int k = start;
 
-            while (k <= end)
-            {
-                if (i > middle)
+                while (k <= end)
                 {
-                    while (j <= end)
+                    if (i > middle)
                     {
-                        l[k] = t[j];
-                        k = k + 1;
-                        j = j + 1;
+                        while (j <= end)
+                        {
+                            l[k] = t[j];
+                            k = k + 1;
+                            j = j + 1;
+                        }
+
                     }
 
-                }
-
-                else if (j > end)
-                {
-                    while (i <= middle)
+                    else if (j > end)
                     {
-                        l[k] = t[i];
-                        k = k + 1;
-                        i = i + 1;
+                        while (i <= middle)
+                        {
+                            l[k] = t[i];
+                            k = k + 1;
+                            i = i + 1;
+                        }
                     }
-                }
 
-                else
-                {
-                    if (t[i] > t[j])
-                    {
-                        l[k] = t[i];
-                        i++;
-                    }
                     else
                     {
-                        l[k] = t[j];
-                        j++;
+                        if (t[i] > t[j])
+                        {
+                            l[k] = t[i];
+                            i++;
+                        }
+                        else
+                        {
+                            l[k] = t[j];
+                            j++;
+                        }
+
+                        k++;
                     }
-
-                    k++;
                 }
-            }
 
-            for (int i = 0; i < loppu; i++)
-            {
-                t[i] = l[i];
-            }
+                for (int x = 0; x < end; x++)
+                {
+                    t[x] = l[x];
+                }
 
-            return t;
+               
+            }
+             return t;
         }
     }
 }
