@@ -38,7 +38,12 @@ namespace Assignment2
             int start = 1;
             int end = temp.count;
             List<int> Values = new List<int>(){60, 170, 30, 2, 11, 19, 24, 50, 60, 3, 100};
-            MergeSort(Values, temp, start, end);
+            List<int> result = MergeSort(Values, temp, start, end);
+
+            foreach (int number in result)
+            {
+                Console.WriteLine(number);
+            }
         }
 
         static int[] Shuffle(List<int> v, List<int> key)
@@ -136,7 +141,30 @@ namespace Assignment2
                         i = i + 1;
                     }
                 }
+
+                else
+                {
+                    if (t[i] > t[j])
+                    {
+                        l[k] = t[i];
+                        i++;
+                    }
+                    else
+                    {
+                        l[k] = t[j];
+                        j++;
+                    }
+
+                    k++;
+                }
             }
+
+            for (int i = 0; i < loppu; i++)
+            {
+                t[i] = l[i];
+            }
+
+            return t;
         }
     }
 }
