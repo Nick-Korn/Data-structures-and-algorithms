@@ -8,7 +8,7 @@ namespace Assignment2
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] arg)
         {
             /* 
             List<int> key = new List<int>(){1,3,0,4,2};
@@ -17,6 +17,7 @@ namespace Assignment2
             test = Shuffle(message, key);
             foreach (int k in test)
             {
+            int end = values.Length;
                 Console.WriteLine(k);
             }
 
@@ -34,11 +35,11 @@ namespace Assignment2
                 Console.WriteLine(number);
             }
             */
-            List<int> temp = new List<int>();
-            int start = 1;
-            int end = temp.Count;
-            List<int> Values = new List<int>(){60, 170, 30, 2, 11, 19, 24, 50, 60, 3, 100};
-            List<int> result = MergeSort(Values, temp, start, end);
+            int[] temp = new int[10];
+            int start = 0;
+            int[] values = new int[10]{60, 170, 30, 2, 11, 19, 24, 50, 3, 100};
+            int end = values.Length;
+            int[] result = MergeSort(values, temp, start, end - 1);
 
             foreach (int number in result)
             {
@@ -96,7 +97,7 @@ namespace Assignment2
             }
             return values;
         }
-        static List<int> MergeSort(List<int> t, List<int> l, int start, int end)
+        static int[] MergeSort(int[] t, int[] l, int start, int end)
         {
 
             if (start >= end) 
@@ -108,9 +109,9 @@ namespace Assignment2
 	        {
                 if(t[start] < t[end])
                 {
-                    int temp = t[end];
-                    t[end] = t[start];
-                    t[start] = temp;
+                    int temp = t[start];
+                    t[start] = t[end];
+                    t[end] = temp;
                 }
 	        }
             else 
@@ -163,14 +164,13 @@ namespace Assignment2
                     }
                 }
 
-                for (int x = 0; x < end; x++)
+                for (int x = start; x < end; x++)
                 {
                     t[x] = l[x];
                 }
-
-               
             }
-             return t;
+
+            return t;
         }
     }
 }
